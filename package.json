@@ -1,0 +1,38 @@
+{
+  "name": "nge-generator",
+  "version": "2.1.6",
+  "description": "Generator for creating Angular apps with ngE generators",
+  "repository": "ibsonRafael/nge-generator",
+  "main": "index.js",
+  "keywords": [
+    "nge",
+    "allwissend",
+    "angular",
+    "ionic",
+    "cli",
+    "enterprise",
+    "starter",
+    "kit",
+    "generator",
+    "tool",
+    "yeoman",
+    "add-on",
+    "awesome"
+  ],
+  "author": "Ibson R G Machado",
+  "license": "MIT",
+  "homepage": "https://github.com/ibsonRafael/nge-generator",
+  "bugs": {
+    "url": "https://github.com/ibsonRafael/nge-generator/issues"
+  },
+  "devDependencies": {
+    "eslint": "^4.3.0",
+    "eslint-config-xo-space": "^0.16.0"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "eslintConfig": {
+    "extends": "xo-space/esnext"
+  }
+}

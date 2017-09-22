@@ -1,5 +1,5 @@
 {
-  "name": "nge-generator",
+  "name": "generator-nge",
   "version": "2.1.6",
   "description": "Generator for creating Angular apps with ngE generators",
   "repository": "ibsonRafael/nge-generator",

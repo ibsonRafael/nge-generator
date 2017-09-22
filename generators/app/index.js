@@ -9,6 +9,11 @@ module.exports = class extends Generator {
   
   method1() {
     this.log('method 1 just ran');
+    this.fs.copyTpl(
+      this.templatePath('interface.ts'),
+      this.destinationPath('public/IName.ts'),
+      { name: 'Name' }
+    );
   }
 
   method2() {

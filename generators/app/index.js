@@ -7,7 +7,15 @@ module.exports = class extends Generator {
     this.option('babel'); // This method adds support for a `--babel` flag
   }
   
-  method1() {
+  initializing() { }
+  
+  prompting() { }
+  
+  configuring() { }
+  
+  default() { }
+  
+  writing() {
     this.log('method 1 just ran');
     this.fs.copyTpl(
       this.templatePath('interface.ts'),
@@ -16,8 +24,10 @@ module.exports = class extends Generator {
     );
   }
 
-  method2() {
-    this.log('method 2 just ran');
-  }
+  conflicts() { }
+  
+  install() { }
+  
+  end() { }
   
 };

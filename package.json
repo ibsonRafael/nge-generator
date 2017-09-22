@@ -4,7 +4,11 @@
   "description": "Generator for creating Angular apps with ngE generators",
   "repository": "ibsonRafael/nge-generator",
   "main": "index.js",
+  "files": [
+    "generators"
+  ],
   "keywords": [
+    "yeoman-generator"
     "nge",
     "allwissend",
     "angular",
@@ -24,6 +28,9 @@
   "homepage": "https://github.com/ibsonRafael/nge-generator",
   "bugs": {
     "url": "https://github.com/ibsonRafael/nge-generator/issues"
+  },
+  "dependencies": {
+    "yeoman-generator": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^4.3.0",

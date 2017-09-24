@@ -33,7 +33,7 @@ module.exports = class extends Generator {
     this.log('Creating classes...');
     for (var i=0; i<this.cfg.classes.length; i++){
       this.fs.copyTpl(
-        this.templatePath('interface.ts'),
+        this.templatePath('classe.ts'),
         this.destinationPath('public/' this.cfg.classes[i].name '.ts'),
         { cfg: this.cfg.classes[i] }
       );

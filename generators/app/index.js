@@ -21,12 +21,21 @@ module.exports = class extends Generator {
   default() { }
   
   writing() {
-    this.log('method 1 just ran');
+    this.log('Creating interfaces...');
     for (var i=0; i<this.cfg.interfaces.length; i++){
       this.fs.copyTpl(
         this.templatePath('interface.ts'),
         this.destinationPath('public/I' this.cfg.interfaces[i].name '.ts'),
         { cfg: this.cfg.interfaces[i] }
+      );
+    }
+    
+    this.log('Creating classes...');
+    for (var i=0; i<this.cfg.classes.length; i++){
+      this.fs.copyTpl(
+        this.templatePath('interface.ts'),
+        this.destinationPath('public/' this.cfg.classes[i].name '.ts'),
+        { cfg: this.cfg.classes[i] }
       );
     }
   }

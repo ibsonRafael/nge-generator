@@ -1,0 +1,13 @@
+{
+  "module":{
+    "name":"pet", "ucfname":"Pet"
+  },
+  "interfaces":[
+    {"name":"IPet"},
+    {"name":"IOwner"}
+  ],
+  "classes":[
+    {"name":"Pet",   "interface":"IPet"},
+    {"name":"Owner", "interface":"IOwner"}
+  ]
+}

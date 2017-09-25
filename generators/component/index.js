@@ -29,6 +29,18 @@ module.exports = class extends Generator {
                 this.destinationPath('src/app/' + cfg.module.ucfname.toLowerCase() +  '/' + cfg.components[i].name.toLowerCase() + '/' + cfg.components[i].name.toLowerCase() + '.component.ts'),
                 cfg.components[i]
             );
+
+            this.fs.copyTpl(
+                this.templatePath('component.html'),
+                this.destinationPath('src/app/' + cfg.module.ucfname.toLowerCase() +  '/' + cfg.components[i].name.toLowerCase() + '/' + cfg.components[i].name.toLowerCase() + '.component.html'),
+                cfg.components[i]
+            );
+
+            this.fs.copyTpl(
+                this.templatePath('component.css'),
+                this.destinationPath('src/app/' + cfg.module.ucfname.toLowerCase() +  '/' + cfg.components[i].name.toLowerCase() + '/' + cfg.components[i].name.toLowerCase() + '.component.css'),
+                cfg.components[i]
+            );
         }
     }
 

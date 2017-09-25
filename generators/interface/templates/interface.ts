@@ -4,7 +4,7 @@
  <% properties.forEach( function(property){ %> * @property {<%= property.type %>} <%= property.name %> - <%= property.description %><% } ); %>
  *
  * @author <%= author %>
- * @copyright <%- copyright %>
+ * @copyright <%= copyright %>
  */
 export interface <%- name %> {
 <% properties.forEach( function(property){ %>

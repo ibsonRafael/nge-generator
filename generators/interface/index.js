@@ -26,6 +26,9 @@ module.exports = class extends Generator {
             cfg.interfaces[i].author = cfg.author;
             cfg.interfaces[i].copyright = cfg.copyright;
 
+
+            console.log(cfg.interfaces[i]);
+
             this.fs.copyTpl(
                 this.templatePath('interface.ts'),
                 this.destinationPath('src/app/interfaces/' + cfg.interfaces[i].name + '.ts'),

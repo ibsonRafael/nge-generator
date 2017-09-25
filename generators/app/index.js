@@ -21,6 +21,7 @@ module.exports = class extends Generator {
   writing() {
       this.composeWith('nge:interface');
       this.composeWith('nge:classe');
+      this.composeWith('nge:service');
   }
 
   conflicts() { }

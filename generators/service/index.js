@@ -19,17 +19,20 @@ module.exports = class extends Generator {
     default() { }
 
     writing() {
-        this.log('Creating classes...');
+        this.log('Creating ServicesModule...');
+        //@TODO
+
+        this.log('Creating Services...');
         var cfg = this.config.getAll();
-        for (var i=0; i < cfg.classes.length; i++){
-            this.log('\t' + 'src/app/' + cfg.module.ucfname +  '/' + cfg.classes[i].name + '.ts' );
-            cfg.classes[i].author = cfg.author;
+        for (var i=0; i < cfg.services.length; i++){
+            this.log('\t' + 'src/app/' + cfg.module.ucfname +  '/services/' + cfg.classes[i].name + '.service.ts' );
+            cfg.services[i].author = cfg.author;
             cfg.services[i].copyright = cfg.copyright;
 
             this.fs.copyTpl(
-                this.templatePath('class.ts'),
-                this.destinationPath('src/app/' + cfg.module.ucfname +  '/' + cfg.classes[i].name + '.ts'),
-                cfg.classes[i]
+                this.templatePath('service.ts'),
+                this.destinationPath('src/app/' + cfg.module.ucfname +  '/services/' + cfg.services[i].name + '.service.ts'),
+                cfg.services[i]
             );
         }
     }

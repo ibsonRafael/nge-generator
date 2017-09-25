@@ -25,13 +25,13 @@ module.exports = class extends Generator {
         this.log('Creating Services...');
         var cfg = this.config.getAll();
         for (var i=0; i < cfg.services.length; i++){
-            this.log('\t' + 'src/app/' + cfg.module.ucfname +  '/services/' + cfg.classes[i].name + '.service.ts' );
+            this.log('\t' + 'src/app/' + cfg.module.ucfname.toLowerCase() +  '/services/' + cfg.classes[i].name.toLowerCase() + '.service.ts' );
             cfg.services[i].author = cfg.author;
             cfg.services[i].copyright = cfg.copyright;
 
             this.fs.copyTpl(
                 this.templatePath('service.ts'),
-                this.destinationPath('src/app/' + cfg.module.ucfname +  '/services/' + cfg.services[i].name + '.service.ts'),
+                this.destinationPath('src/app/' + cfg.module.ucfname.toLowerCase() +  '/services/' + cfg.services[i].name.toLowerCase() + '.service.ts'),
                 cfg.services[i]
             );
         }

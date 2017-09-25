@@ -22,7 +22,7 @@ module.exports = class extends Generator {
         this.log('Creating interfaces...');
         var cfg = this.config.getAll();
         for (var i=0; i < cfg.interfaces.length; i++){
-            this.log('\t' + 'src/app/interfaces/' + cfg.interfaces[i].name + '.ts' );
+            this.log('\t' + 'src/app/interfaces/' + cfg.interfaces[i].name.toLowerCase() + '.ts' );
             cfg.interfaces[i].author = cfg.author;
             cfg.interfaces[i].copyright = cfg.copyright;
 
@@ -31,7 +31,7 @@ module.exports = class extends Generator {
 
             this.fs.copyTpl(
                 this.templatePath('interface.ts'),
-                this.destinationPath('src/app/interfaces/' + cfg.interfaces[i].name + '.ts'),
+                this.destinationPath('src/app/interfaces/' + cfg.interfaces[i].name.toLowerCase() + '.ts'),
                 cfg.interfaces[i]
             );
         }

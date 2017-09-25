@@ -3,9 +3,9 @@
  * @class
  * @implements <%= interface %>
  * @classdesc This is a description of the MyClass class.
- *
- <% properties.forEach( function(property){ %> * @property {<%= property.type %>} <%= property.name %> - <%= property.description %><% } ); %>
- *
+ * <% properties.forEach( function(property){ %>
+ * @property {<%= property.type %>} <%= property.name %> - <%= property.description %>
+ <% } ); %>*
  * @author <%- author %>
  * @copyright <%- copyright %>
  */

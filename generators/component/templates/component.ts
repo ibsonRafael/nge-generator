@@ -9,15 +9,22 @@
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
+<% interfaces.forEach( function(inter){ %>import {inter} from "../../interfaces/<%- inter.toLowerCase() %>.ts";
+<% } ); %>
+<% classes.forEach( function(cls){ %>import {cls} from "../<%- cls.toLowerCase() %>.ts";
+<% } ); %>
+
 @Component({
     selector: 'app-<%= name.toLowerCase() %>',
     templateUrl: './<%= name.toLowerCase() %>.component.html',
     styleUrls: ['./<%= name.toLowerCase() %>.component.css']
 })
-export class <%= name %>Component implements OnInit {
+export class <%= name %>Component implements OnInit, OnDestroy {
 
     /** @constructs <%- name %> */
-    constructor( ) { }
+    constructor(
+        <% services.forEach( function(srv){ %>protected <%= srv.toLowerCase() %>: <%= srv %>,
+    <% } ); %>) { }
 
 
     /**
@@ -34,4 +41,5 @@ export class <%= name %>Component implements OnInit {
     ngOnDestroy( ) {
         /** @todo */
     }
+
 }

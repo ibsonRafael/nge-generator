@@ -8,8 +8,10 @@
  */
 import { Injectable } from '@angular/core';
 
-<% interfaces.forEach( function(inter){ %>import {inter} from "../../interfaces/<%- inter.toLowerCase() %>.ts\n";<% } ); %>
-<% classes.forEach( function(cls){ %>import {cls} from "../<%- cls.toLowerCase() %>.ts\n";<% } ); %>
+<% interfaces.forEach( function(inter){ %>import {inter} from "../../interfaces/<%- inter.toLowerCase() %>.ts";
+<% } ); %>
+<% classes.forEach( function(cls){ %>import {cls} from "../<%- cls.toLowerCase() %>.ts";
+<% } ); %>
 
 @Injectable()
 export class <%- name %>Service {

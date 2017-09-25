@@ -1,3 +1,19 @@
+/**
+ * Interface for classes that represent a <%= name %>.
+ * @author <%= author %>
+ * @interface I<%= name %>
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ * @copyright
+ */
 interface I<%= name %> {
     attr: Date;
 }

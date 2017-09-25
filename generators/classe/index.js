@@ -24,7 +24,7 @@ module.exports = class extends Generator {
         for (var i=0; i < cfg.classes.length; i++){
             this.log('\t' + 'src/app/' + cfg.module.ucfname +  '/' + cfg.classes[i].name + '.ts' );
             cfg.classes[i].author = cfg.author;
-            cfg.services[i].copyright = cfg.copyright;
+            cfg.classes[i].copyright = cfg.copyright;
 
             this.fs.copyTpl(
                 this.templatePath('class.ts'),

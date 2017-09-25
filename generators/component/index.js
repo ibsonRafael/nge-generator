@@ -25,7 +25,7 @@ module.exports = class extends Generator {
             cfg.components[i].copyright = cfg.copyright;
 
             this.fs.copyTpl(
-                this.templatePath('class.ts'),
+                this.templatePath('component.ts'),
                 this.destinationPath('src/app/' + cfg.module.ucfname.toLowerCase() +  '/' + cfg.components[i].name.toLowerCase() + '/' + cfg.components[i].name.toLowerCase() + '.component.ts'),
                 cfg.components[i]
             );

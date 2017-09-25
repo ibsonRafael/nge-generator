@@ -2,7 +2,7 @@ var Generator = require('yeoman-generator');
 
 module.exports = class extends Generator {
   
-  private cfg = {};
+  // private cfg = {};
 
   // The name `constructor` is important here
   constructor(args, opts) {
@@ -11,7 +11,7 @@ module.exports = class extends Generator {
   }
   
   initializing() {
-    this.cfg = this.config.getAll();
+    // this.cfg = this.config.getAll();
   }
   
   prompting() { }

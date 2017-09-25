@@ -2,8 +2,6 @@ var Generator = require('yeoman-generator');
 
 module.exports = class extends Generator {
 
-    private cfg = {};
-
     // The name `constructor` is important here
     constructor(args, opts) {
         super(args, opts);
@@ -11,7 +9,7 @@ module.exports = class extends Generator {
     }
 
     initializing() {
-        this.cfg = this.config.getAll();
+
     }
 
     prompting() { }
@@ -22,12 +20,13 @@ module.exports = class extends Generator {
 
     writing() {
         this.log('Creating classes...');
-        for (var i=0; i<this.cfg.classes.length; i++){
+        var cfg = this.config.getAll();
+        for (var i=0; i<cfg.classes.length; i++){
             this.fs.copyTpl(
                 this.templatePath('class.ts'),
                 this.destinationPath(
-                    'src/app/' + this.cfg.module.ucfname +  '/' + this.cfg.classes[i].name + '.ts',
-                    { cfg: this.cfg.classes[i] }
+                    'src/app/' + cfg.module.ucfname +  '/' + cfg.classes[i].name + '.ts',
+                    { cfg: cfg.classes[i] }
                 )
             );
         }

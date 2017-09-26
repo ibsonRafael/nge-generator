@@ -22,13 +22,17 @@ module.exports = class extends Generator {
         this.log('Creating classes...');
         var cfg = this.config.getAll();
         for (var i=0; i < cfg.classes.length; i++){
-            this.log('\t' + 'src/app/' + cfg.module.ucfname.toLowerCase() +  '/' + cfg.classes[i].name.toLowerCase() + '.ts' );
+
+            var s = 'src/app/' + cfg.module.ucfname +  '/' + cfg.classes[i].name + '.ts';
+            var path = s.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^[-]/, "").replace("/-", "/");
+            this.log('\t' + path  );
+
             cfg.classes[i].author = cfg.author;
             cfg.classes[i].copyright = cfg.copyright;
 
             this.fs.copyTpl(
                 this.templatePath('class.ts'),
-                this.destinationPath('src/app/' + cfg.module.ucfname.toLowerCase() +  '/' + cfg.classes[i].name.toLowerCase() + '.ts'),
+                this.destinationPath(path),
                 cfg.classes[i]
             );
         }

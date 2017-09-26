@@ -2,10 +2,8 @@ var Generator = require('yeoman-generator');
 
 module.exports = class extends Generator {
 
-    // The name `constructor` is important here
     constructor(args, opts) {
         super(args, opts);
-        // this.option('babel'); // This method adds support for a `--babel` flag
     }
 
     initializing() {
@@ -25,7 +23,8 @@ module.exports = class extends Generator {
         this.log('Creating Services...');
         var cfg = this.config.getAll();
 
-        var path = 'src/app/' + cfg.module.ucfname.toLowerCase() +  '/' + cfg.module.name.toLowerCase() + '.module.ts';
+        var s = 'src/app/' + cfg.module.ucfname +  '/' + cfg.module.name + '.module.ts';
+        var path = s.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^[-]/, "").replace("/-", "/");
         this.log('\t' + path  );
 
         this.fs.copyTpl(

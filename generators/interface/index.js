@@ -22,16 +22,18 @@ module.exports = class extends Generator {
         this.log('Creating interfaces...');
         var cfg = this.config.getAll();
         for (var i=0; i < cfg.interfaces.length; i++){
-            this.log('\t' + 'src/app/interfaces/' + cfg.interfaces[i].name.toLowerCase() + '.ts' );
+            var s = 'src/app/interfaces/' + cfg.interfaces[i].name + '.ts';
+            var path = s.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^[-]/, "").replace("/-", "/");
+            this.log('\t' + path  );
+
             cfg.interfaces[i].author = cfg.author;
             cfg.interfaces[i].copyright = cfg.copyright;
-
 
             console.log(cfg.interfaces[i]);
 
             this.fs.copyTpl(
                 this.templatePath('interface.ts'),
-                this.destinationPath('src/app/interfaces/' + cfg.interfaces[i].name.toLowerCase() + '.ts'),
+                this.destinationPath(path),
                 cfg.interfaces[i]
             );
         }

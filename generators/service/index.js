@@ -25,15 +25,20 @@ module.exports = class extends Generator {
         this.log('Creating Services...');
         var cfg = this.config.getAll();
         for (var i=0; i < cfg.services.length; i++){
-            this.log('\t' + 'src/app/' + cfg.module.ucfname.toLowerCase() +  '/services/' + cfg.services[i].name.toLowerCase() + '.service.ts' );
+
+            var s = 'src/app/' + cfg.module.ucfname +  '/services/' + cfg.services[i].name + '.service.ts';
+            var path = s.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^[-]/, "").replace("/-", "/");
+            this.log('\t' + path  );
+
             cfg.services[i].author = cfg.author;
             cfg.services[i].copyright = cfg.copyright;
 
             this.fs.copyTpl(
                 this.templatePath('service.ts'),
-                this.destinationPath('src/app/' + cfg.module.ucfname.toLowerCase() +  '/services/' + cfg.services[i].name.toLowerCase() + '.service.ts'),
+                this.destinationPath(path),
                 cfg.services[i]
             );
+
         }
     }
 

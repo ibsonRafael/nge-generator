@@ -45,8 +45,8 @@ export class <%= name %>Component implements OnInit, OnDestroy {
      *
      * @returns
      */
-    <%- mth %> () {
-        /** @todo Implements <%- mth %> method body... */
+    <%- mth.operationId %> () {
+        /** @todo Implements <%- mth.operationId %> method body... */
     }
 <% } ); %>
 

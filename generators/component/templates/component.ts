@@ -4,7 +4,8 @@
  * @memberof ???ModuleName???
  * @exports <%- name %>Component
  *
- <% services.forEach( function(srv){ %> * @property {<%= srv %>} <%= srv.toLowerCase() %> - <%= srv %> Injected by dependency injection.
+<% services.forEach( function(srv){ %> * @property {<%= srv %>} <%= srv.replace(/\.?([A-Z])/g, function (x,y){return "_" + y.toLowerCase()}).replace(/^_/, "") %> - <%= srv %> Injected by dependency injection.
+<% } ); %><% classes.forEach( function(cls){ %> * @property {<%= cls %>} <%= cls.replace(/\.?([A-Z])/g, function (x,y){return "_" + y.toLowerCase()}).replace(/^_/, "") %> - <%= cls %> object;
 <% } ); %> *
  * @version 1.2.3
  * @since 0.0.0
@@ -12,8 +13,9 @@
  * @author <%- author %>
  * @copyright <%- copyright %>
  */
-
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+<% if (hasForm) { %>import {NgForm} from '@angular/forms';<% } %>
 
 <% interfaces.forEach( function(inter){ %>import {<%- inter %>} from "../../interfaces/<%- inter.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "") %>.ts";
 <% } ); %>
@@ -21,22 +23,32 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 <% } ); %>
 
 @Component({
-    selector: 'app-<%= name.toLowerCase() %>',
-    templateUrl: './<%= name.toLowerCase() %>.component.html',
-    styleUrls: ['./<%= name.toLowerCase() %>.component.css']
+    selector: 'app-<%= name.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "") %>',
+    templateUrl: './<%= name.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "") %>.component.html',
+    styleUrls: [ './<%= name.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "") %>.component.css']
 })
 export class <%= name %>Component implements OnInit, OnDestroy {
 
+<% classes.forEach( function(cls){ %>    public <%- cls.replace(/\.?([A-Z])/g, function (x,y){return "_" + y.toLowerCase()}).replace(/^_/, "") %> = null;
+<% } ); %>
+
     /** @constructs <%- name %> */
     constructor(
-<% services.forEach( function(srv){ %>        protected <%= srv.toLowerCase() %>: <%= srv %>,
-<% } ); %>) { }
+<% services.forEach( function(srv){ %>        protected <%= srv.replace(/\.?([A-Z])/g, function (x,y){return "_" + y.toLowerCase()}).replace(/^_/, "") %>:<%= srv %>,
+<% } ); %>
+        private router: Router,
+        private route: ActivatedRoute
+    ) { }
 
 
     /**
      * Initialize the <%= name.toLowerCase() %> component after Angular first displays the data-bound properties and sets the <%= name.toLowerCase() %> 's input properties.
      */
     ngOnInit( ) {
+        this.route.queryParams.subscribe(queryParams => {
+            console.log(queryParams);
+        });
+
         /** @todo */
     }
 
@@ -44,13 +56,22 @@ export class <%= name %>Component implements OnInit, OnDestroy {
     /**
      * Description of method...
      * @since 0.0.0
-     *
-     * @param pName {pType} - Description
+     * <% if (hasForm) { %>
+     * @param form {NgForm} - Agular formulary abstraction <% } %>
      *
      * @returns
      */
-    <%- mth.operationId %> () {
+    <%- mth.operationId %> (<% if (hasForm) { %>form:NgForm<% } %>) {
+        <% if (hasForm) { %>
+            if( form.valid ) {
+<% classes.forEach( function(cls){ %>                this.<%- cls.replace(/\.?([A-Z])/g, function (x,y){return "_" + y.toLowerCase()}).replace(/^_/, "") %> = {};
+<% } ); %>
+            }
+        <% } %>
+
         /** @todo Implements <%- mth.operationId %> method body... */
+
+        this.router.navigate(['/somewhere/']);
     }
 <% } ); %>
 
@@ -58,6 +79,8 @@ export class <%= name %>Component implements OnInit, OnDestroy {
      * Cleanup just before destroys the <%= name.toLowerCase() %> component. Unsubscribe Observables and detach event handlers to avoid memory leaks.
      */
     ngOnDestroy( ) {
+        this.route.queryParams.unsubscribe();
+
         /** @todo */
     }
 

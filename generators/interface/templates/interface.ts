@@ -1,9 +1,8 @@
 /**
  * Interface for classes that represent a <%= name %>.
  * @interface <%= name %>
- * <% properties.forEach( function(property){ %>
- * @property {<%= property.type %>} <%= property.name %> - <%= property.description %>
- <% } ); %>*
+<% properties.forEach( function(property){ %> * @property {<%= property.type %>} <%= property.name %> - <%= property.description %>
+<% } ); %>*
  * @author <%= author %>
  * @copyright <%= copyright %>
  */

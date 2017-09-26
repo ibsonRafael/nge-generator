@@ -24,7 +24,7 @@ module.exports = class extends Generator {
         for (var i=0; i < cfg.classes.length; i++){
 
             var s = 'src/app/' + cfg.module.ucfname +  '/' + cfg.classes[i].name + '.ts';
-            var path = s.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "").replace("/-", "/");
+            var path = s.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "").split("/-").join("/");
             this.log('\t' + path  );
 
             cfg.classes[i].author = cfg.author;

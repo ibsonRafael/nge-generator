@@ -17,9 +17,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 <% if (hasForm) { %>import {NgForm} from '@angular/forms';<% } %>
 
-<% interfaces.forEach( function(inter){ %>import {<%- inter %>} from "../../interfaces/<%- inter.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "") %>.ts";
+<% interfaces.forEach( function(inter){ %>import {<%- inter %>} from "../../interfaces/<%- inter.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "") %>";
 <% } ); %>
-<% classes.forEach( function(cls){ %>import {<%- cls %>} from "../<%- cls.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "") %>.ts";
+<% classes.forEach( function(cls){ %>import {<%- cls %>} from "../<%- cls.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "") %>";
 <% } ); %>
 
 @Component({
@@ -34,7 +34,7 @@ export class <%= name %>Component implements OnInit, OnDestroy {
 
     /** @constructs <%- name %> */
     constructor(
-<% services.forEach( function(srv){ %>        protected <%= srv.replace(/\.?([A-Z])/g, function (x,y){return "_" + y.toLowerCase()}).replace(/^_/, "") %>:<%= srv %>,
+<% services.forEach( function(srv){ %>        protected <%= srv.replace(/\.?([A-Z])/g, function (x,y){return "_" + y.toLowerCase()}).replace(/^_/, "") %>:<%= srv %>Service,
 <% } ); %>
         private router: Router,
         private route: ActivatedRoute
@@ -79,8 +79,6 @@ export class <%= name %>Component implements OnInit, OnDestroy {
      * Cleanup just before destroys the <%= name.toLowerCase() %> component. Unsubscribe Observables and detach event handlers to avoid memory leaks.
      */
     ngOnDestroy( ) {
-        this.route.queryParams.unsubscribe();
-
         /** @todo */
     }
 

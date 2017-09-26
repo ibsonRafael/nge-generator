@@ -1,5 +1,5 @@
 /**
- * <%= module.name %> module.
+ * <%= module.ucfname %> module.
  * @version 1.2.3
  * @since 0.0.0
  * @module <%= module.name %>
@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule }  from "@angular/forms";
 
 <% components.forEach( function(cp){ %>import { <%- cp.name  %> } from "./<%= cp.name.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "") %>/<%= cp.name.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "") %>.component.ts";
-    <% } ); %>
+<% } ); %>
 
 import { <%= module.ucfname %>Routing }  from "./<%= module.name.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "") %>-routing.module.ts";
 
@@ -26,16 +26,16 @@ import { <%= module.ucfname %>Routing }  from "./<%= module.name.replace(/\.?([A
     ],
 
     declarations: [
-        <% components.forEach( function(cp){ %>        <%- cp.name  %>,
-        <% } ); %>
-],
+<% components.forEach( function(cp){ %>        <%- cp.name  %>,
+<% } ); %>
+    ],
 
 providers: [],
 
     exports:[
-    <% components.forEach( function(cp){ %>        <%- cp.name  %>,
-    <% } ); %>
-]
+<% components.forEach( function(cp){ %>        <%- cp.name  %>,
+<% } ); %>
+    ]
 
 })
 

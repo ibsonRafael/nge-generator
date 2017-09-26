@@ -12,7 +12,7 @@
 
 import <%= interface %> from "../interfaces/<%= interface.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "") %>.ts";
 
-class <%= name %> implements <%= interface %> {
+export class <%= name %> implements <%= interface %> {
 <% properties.forEach( function(property){ %>
     /** <%= property.description %> */
     <%= property.name %>:<%= property.type %> = null;

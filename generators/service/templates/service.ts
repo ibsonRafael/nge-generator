@@ -10,9 +10,9 @@
  */
 import { Injectable } from '@angular/core';
 
-<% interfaces.forEach( function(inter){ %>import {inter} from "../../interfaces/<%= inter.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^[-]/, "") %>.ts";
+<% interfaces.forEach( function(inter){ %>import {inter} from "../../interfaces/<%= inter.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "") %>.ts";
 <% } ); %>
-<% classes.forEach( function(cls){ %>import {cls} from "../<%= cls.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^[-]/, "") %>.ts";
+<% classes.forEach( function(cls){ %>import {cls} from "../<%= cls.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "") %>.ts";
 <% } ); %>
 
 @Injectable()

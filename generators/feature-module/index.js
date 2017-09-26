@@ -24,7 +24,7 @@ module.exports = class extends Generator {
         var cfg = this.config.getAll();
 
         var s = 'src/app/' + cfg.module.ucfname +  '/' + cfg.module.name + '.module.ts';
-        var path = s.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^[-]/, "").replace("/-", "/");
+        var path = s.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "").replace("/-", "/");
         this.log('\t' + path  );
 
         this.fs.copyTpl(

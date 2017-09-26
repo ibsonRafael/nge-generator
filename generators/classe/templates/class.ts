@@ -10,7 +10,7 @@
  * @copyright <%- copyright %>
  */
 
-import <%= interface %> from "../interfaces/<%= interface.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "") %>.ts";
+import { <%= interface %> } from "../interfaces/<%= interface.replace(/\.?([A-Z])/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "") %>";
 
 export class <%= name %> implements <%= interface %> {
 <% properties.forEach( function(property){ %>

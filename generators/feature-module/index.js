@@ -25,7 +25,7 @@ module.exports = class extends Generator {
         this.log('Creating Services...');
         var cfg = this.config.getAll();
 
-        var path = 'src/app/' + cfg.module.ucfname.toLowerCase() +  '/' + cfg.services[i].name.toLowerCase() + '.module.ts';
+        var path = 'src/app/' + cfg.module.ucfname.toLowerCase() +  '/' + cfg.module.name.toLowerCase() + '.module.ts';
         this.log('\t' + path  );
 
         this.fs.copyTpl(

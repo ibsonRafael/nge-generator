@@ -1,13 +1,86 @@
 {
-  "module":{
-    "name":"pet", "ucfname":"Pet"
-  },
-  "interfaces":[
-    {"name":"IPet"},
-    {"name":"IOwner"}
-  ],
-  "classes":[
-    {"name":"Pet",   "interface":"IPet"},
-    {"name":"Owner", "interface":"IOwner"}
-  ]
+  "generator-nge": {
+    "author":"Ibson R G Machado <ibson.rafael@gmail.com>",
+    "copyright":"2017 ? ? ?  Ltd. All rights reserved.",
+    "module": {
+        "name": "poll",
+        "ucfname": "Poll" 
+    },
+    "interfaces":[
+        {"name":"IPoll",   "properties":[{"name":"name", "type":"string", "description":"description"}]},
+        {"name":"IOwner", "properties":[{"name":"fname", "type":"string", "description":"description"}, {"name":"lname", "type":"string", "description":"description"}]}
+    ],
+    "classes":[
+        {"name":"Poll",  "interface":"IPoll",  "properties":[{"name":"name", "type":"string", "description":"description"}]},
+        {"name":"Owner","interface":"IOwner","properties":[{"name":"fname", "type":"string", "description":"description"}, {"name":"lname", "type":"string", "description":"description"}]}
+    ],
+    "services":[
+        {
+            "name":"SavePoll",
+            "summary":"",
+            "interfaces":["IPoll"],
+            "classes":["Poll"],
+            "methods":[{"operationId":"addPoll", "http":"post", "returnType":"Poll"}]
+        },
+        {
+            "name":"UpdatePoll",
+            "interfaces":["IPoll"],
+            "classes":["Poll"],
+            "methods":[{"operationId":"addPoll", "http":"put", "returnType":"Poll"}]
+        },
+        {
+            "name":"GetPoll",
+            "interfaces":["IPoll"],
+            "classes":["Poll"],
+            "methods":[{"operationId":"addPoll", "http":"get", "returnType":"Poll"}]
+        },
+        {
+            "name":"FindPoll",
+            "interfaces":["IPoll"],
+            "classes":["Poll"],
+            "methods":[{"operationId":"findPollsByStatus", "http":"get", "returnType":"Poll"}]
+        },
+        {
+            "name":"DeletePoll",
+            "interfaces":["IPoll"],
+            "classes":["Poll"],
+            "methods":[{"operationId":"addPoll", "http":"delete", "returnType":"Poll"}]
+        }
+    ],
+    "components":[
+        {
+            "name":"ListPoll",
+            "interfaces":["IPoll","IOwner"],
+            "classes":["Poll","Owner"],
+            "services":["SavePoll","UpdatePoll"],
+            "methods":[
+                {"operationId":"list",   "useForm":false},
+                {"operationId":"delete", "useForm":false},
+                {"operationId":"create", "useForm":false},
+                {"operationId":"update", "useForm":false}
+            ],
+            "hasForm":false
+        },{
+            "name":"Poll",
+            "interfaces":["IPoll","IOwner"],
+            "classes":["Poll","Owner"],
+            "services":["GetPoll", "DeletePoll"],
+            "methods":[
+                {"operationId":"edit", "useForm":false},
+                {"operationId":"delete", "useForm":false}
+            ],
+            "hasForm":false
+        },{
+            "name":"EditPoll",
+            "interfaces":["IPoll","IOwner"],
+            "classes" :["Poll","Owner"],
+            "services":["SavePoll","UpdatePoll"],
+            "methods" :[
+                {"operationId":"save", "useForm":true},
+                {"operationId":"update", "useForm":true}
+            ],
+            "hasForm":true
+        }
+    ]
+  }
 }
